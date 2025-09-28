@@ -59,7 +59,6 @@ curl -XPOST http://localhost:51654/api/products/create
 * `-H` specifies the HTTP headers. We send JSON `string` so we set '`Content-Type`' to '`application/json`'.
 * `-d` specifies the content body of the request. It can be seen clearly that the keys in the `json dictionary` correspond exactly to the `Product` members.
 
-
 The output returned by `curl` is empty when the `post` request is successful. To see our created `Product`, we need to have the retrieval method which is discussed shortly below.
 
 The methods to retrieve all products and a single `product` are listed below.<br />
@@ -185,7 +184,6 @@ Compare this C++ code to raw `curl` command, we can see which information goes t
 ```
 curl -XPOST http://localhost:51654/api/products/create 
 -H 'Content-Type: application/json' -d'{"Id":1, "Name":"ElectricFan","Qty":14,"Price":20.90}'
-
 ```
 
 After product creation, we try to retrieve it using the C++ code below:
