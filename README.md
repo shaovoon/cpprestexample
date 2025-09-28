@@ -94,9 +94,9 @@ public IHttpActionResult GetProduct(long id)
 The respective `curl` commands retrieve all and a single `Product` based on id (which is `1`). The commandline argument is similar to what I have explained above, so I skip them.
 
 ```
-curl -XGET http://localhost:51654/api/products'
+curl -XGET http://localhost:51654/api/products
 
-curl -XGET http://localhost:51654/api/products/1'
+curl -XGET http://localhost:51654/api/products/1
 ```
 
 The output is:
