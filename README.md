@@ -4,7 +4,7 @@
 
 Today, I am going to show you how to make HTTP request to a REST server using [C++ Requests](https://github.com/whoshuu/cpr) library by Huu Nguyen. Mr Nguyen is heavily influenced by [Python Requests](http://docs.python-requests.org/en/master/) design philosophy when writing [C++ Requests](https://github.com/whoshuu/cpr). Those who had used or are familiar with Python Requests, should feel right at home with [C++ Requests](https://github.com/whoshuu/cpr).
 
-To demonstrate our client code, we need a web server that we can make our request to so in our case, we&#39;ll use ASP.NET Web API version 2 to implement our CRUD API. The web server is not this article&#39;s focus but I shall still devote some time to explain the Web API code. For those readers not interested in the server code (because they are not using ASP.NET), they can skip to the client section.
+To demonstrate our client code, we need a web server that we can make our request to so in our case, we'll use ASP.NET Web API version 2 to implement our CRUD API. The web server is not this article's focus but I shall still devote some time to explain the Web API code. For those readers not interested in the server code (because they are not using ASP.NET), they can skip to the client section.
 
 ## ASP.NET Web API
 
@@ -51,12 +51,12 @@ To test our code, I use `curl` command. If you have already had [Postman](https:
 
 ```
 curl -XPOST http://localhost:51654/api/products/create 
--H &#39;Content-Type: application/json&#39; -d&#39;{"Id":1, "Name":"ElectricFan","Qty":14,"Price":20.90}&#39;
+-H 'Content-Type: application/json' -d'{"Id":1, "Name":"ElectricFan","Qty":14,"Price":20.90}'
 ```
 
 * `-X` specifies the [HTTP verb](http://www.restapitutorial.com/lessons/httpmethods.html), `POST` which corresponds to `create` or `update` method
 * 2<sup>nd</sup> argument is the URL to which this request should go to
-* `-H` specifies the HTTP headers. We send JSON `string` so we set &#39;`Content-Type`&#39; to &#39;`application/json`&#39;.
+* `-H` specifies the HTTP headers. We send JSON `string` so we set '`Content-Type`' to '`application/json`'.
 * `-d` specifies the content body of the request. It can be seen clearly that the keys in the `json dictionary` correspond exactly to the `Product` members.
 
 
@@ -94,9 +94,9 @@ public IHttpActionResult GetProduct(long id)
 The respective `curl` commands retrieve all and a single `Product` based on id (which is `1`). The commandline argument is similar to what I have explained above, so I skip them.
 
 ```
-curl -XGET http://localhost:51654/api/products&#39;
+curl -XGET http://localhost:51654/api/products'
 
-curl -XGET http://localhost:51654/api/products/1&#39;
+curl -XGET http://localhost:51654/api/products/1'
 ```
 
 The output is:
@@ -151,7 +151,7 @@ The respective `curl` commands below updates and deletes `Product` correspond to
 
 ```
 curl -XPUT http://localhost:51654/api/products/1 
--H &#39;Content-Type: application/json&#39; -d&#39;{"Id":1, "Name":"ElectricFan","Qty":15,"Price":29.80}&#39;
+-H 'Content-Type: application/json' -d'{"Id":1, "Name":"ElectricFan","Qty":15,"Price":29.80}'
 
 curl -XDELETE http://localhost:51654/api/products/1
 ```
@@ -183,7 +183,7 @@ Compare this C++ code to raw `curl` command, we can see which information goes t
 
 ```
 curl -XPOST http://localhost:51654/api/products/create 
--H &#39;Content-Type: application/json&#39; -d&#39;{"Id":1, "Name":"ElectricFan","Qty":14,"Price":20.90}&#39;
+-H 'Content-Type: application/json' -d'{"Id":1, "Name":"ElectricFan","Qty":14,"Price":20.90}'
 
 ```
 
@@ -193,7 +193,7 @@ After product creation, we try to retrieve it using the C++ code below:
 auto r = cpr::Get(cpr::Url{ "http://localhost:51654/api/products/1" });
 ```
 
-The output is the same as the one from `curl` command which isn&#39;t strange since C++ Requests utilize `libcurl` underneath to do its work.
+The output is the same as the one from `curl` command which isn't strange since C++ Requests utilize `libcurl` underneath to do its work.
 
 ```json
 {"Id":1,"Name":"ElectricFan","Qty":14,"Price":20.90}
